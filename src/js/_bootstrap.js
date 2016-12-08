@@ -24,24 +24,36 @@ var myapp = new function() {
 		"name-of-definition": "/js/sample.js#name-of-definition",
 
 		// Application
-		"enums": "/js/_app.js#enums",
-		"flags": "/js/_app.js#flags",
-		"helpers": "/js/_app.js#helpers",
-		"svc": "/js/_app.js#svc",
-		"user": "/js/_app.js#user",
-		"util": "/js/_app.js#util",
-		"util-array": "/js/_app.js#util-array",
-		"util-object": "/js/_app.js#util-object",
-		"util-string": "/js/_app.js#util-string",
-		"util-uri": "/js/_app.js#util-uri",
+		"app": {
+			"enums": "/js/_app.js#enums",
+			"flags": "/js/_app.js#flags",
+			"helpers": "/js/_app.js#helpers",
+			"svc": "/js/_app.js#svc",
+			"user": "/js/_app.js#user",
+			"util": {
+				"main": "/js/_app.js#util",
+				"array": "/js/_app.js#util-array",
+				"object": "/js/_app.js#util-object",
+				"string": "/js/_app.js#util-string",
+				"uri": "/js/_app.js#util-uri"
+			}
+		},
 
 		// Framework
-		"component": "/js/_framework.js#component",
-		"dom": "/js/_framework.js#dom",
-		"enum": "/js/_framework.js#enum"
-		"logger": "/js/_framework.js#logger",
-		"messenger": "/js/_framework.js#messenger",
-		"router": "/js/_framework.js#router",
+		"framework": {
+			"component": "/js/_framework.js#component",
+			"dom": "/js/_framework.js#dom",
+			"enum": "/js/_framework.js#enum"
+			"logger": "/js/_framework.js#logger",
+			"messenger": "/js/_framework.js#messenger",
+			"router": "/js/_framework.js#router"
+		},
+
+		// Services
+		"svc": {
+			"main": ,
+			"": 
+		},
 
 		// Component: My Component
 		"myComponent_ModelPartA": "/components/my-component.js#modelPartA"
@@ -54,9 +66,9 @@ var myapp = new function() {
 		var dependencyList = [];
 
 		return {
-			addObject: function() {
-				dependencyList.push();
-			},
+			// addObject: function() {
+			// 	dependencyList.push();
+			// },
 			load: function(dependencies) {
 
 				dependencyList
@@ -74,18 +86,26 @@ var myapp = new function() {
 	};
 
 
-	_createDependency = function(options) {
-		var dependency;
+	_createDependency = function(options, dependencies) {
+		var dependency, requiredDependencies;
+
+		//
+		if (options.requireApp) {
+			requiredDependencies = [
+				_config, _util, _flags, _enums, _dom,
+				_messenger, _logger, _router,
+				_svc, _helpers, _component
+			]
+			.concat(dependencies);
+		}
+		else {
+			requiredDependencies = dependencies;
+		}
 
 		//
 		dependency = {
 			name: options.name,
-			main: options.main(
-				_config, _util, _flags, _enums, _dom,
-				_messenger, _logger, _router,
-				_svc, _helpers, _component,
-				...arguments
-			)
+			main: options.main.apply(undefined, requiredDependencies)
 		};	
 
 		return dependency;
@@ -95,23 +115,23 @@ var myapp = new function() {
 	_api.define = function(options) {
 		// Verify arguments
 		if (typeof options !== "object" || options === null) {
-			throw new SyntaxError(`The definition must be defined with the following object: { name: string, main: function, require: optional array<string> }.`);
+			throw new SyntaxError(`The definition must be defined with the following object: { name: string, main: function, require: optional array<string>, requireApp: optional boolean }.`);
 		}
 
 		if (typeof options.name !== "string" || options.name.trim() === "") {
-			throw new SyntaxError(`The definition must have a valid name (usage: { name: string, main: function, require: optional array<string> }).`);
+			throw new SyntaxError(`The definition must have a valid name (usage: { name: string, main: function, require: optional array<string>, requireApp: optional boolean, requireApp: optional boolean }).`);
 		}
 
 		if (typeof options.main !== "function") {
-			throw new SyntaxError(`The definition must have a valid function (usage: { name: string, main: function, require: optional array<string> }).`);
+			throw new SyntaxError(`The definition must have a valid function (usage: { name: string, main: function, require: optional array<string>, requireApp: optional boolean }).`);
 		}
 
 		//
 		return dependencyManager
 			.load(options.require)
-			.then(function() {
+			.then(function(dependencies) {
 				//
-				var dependency = createDependency(options);
+				var dependency = _createDependency.apply(options, dependencies);
 
 				//
 				dependencyManager.add(dependency);
@@ -126,26 +146,26 @@ var myapp = new function() {
 	_api.defineModel = function(options) {
 		// Verify arguments
 		if (typeof options !== "object" || options === null) {
-			throw new SyntaxError(`The model must be defined with the following object: { name: string, main: function, keys: optional array<string>, require: optional array<string> }.`);
+			throw new SyntaxError(`The model must be defined with the following object: { name: string, main: function, keys: optional array<string>, require: optional array<string>, requireApp: optional boolean }.`);
 		}
 
 		if (typeof options.name !== "string" || options.name.trim() === "") {
-			throw new SyntaxError(`The model must have a valid name (usage: { name: string, main: function, keys: optional array<string>, require: optional array<string> }).`);
+			throw new SyntaxError(`The model must have a valid name (usage: { name: string, main: function, keys: optional array<string>, require: optional array<string>, requireApp: optional boolean }).`);
 		}
 
 		if (typeof options.main !== "function") {
-			throw new SyntaxError(`The model must have a valid function (usage: { name: string, main: function, keys: optional array<string>, require: optional array<string> }).`);
+			throw new SyntaxError(`The model must have a valid function (usage: { name: string, main: function, keys: optional array<string>, require: optional array<string>, requireApp: optional boolean }).`);
 		}
 
 		//
 		return dependencyManager
 			.load(options.require)
-			.then(function() {
+			.then(function(dependencies) {
 				//
-				var dependency = createDependency(options);		
+				var dependency = _createDependency(options, dependencies);		
 
 				//
-				component.model({
+				_component.model({
 					name: options.name,
 					keys: options.keys,
 					main: dependency.main
@@ -158,7 +178,37 @@ var myapp = new function() {
 
 
 
-	_api.defineAction = function(options) {};
+	_api.defineAction = function(options) {
+		// Verify arguments
+		if (typeof options !== "object" || options === null) {
+			throw new SyntaxError(`The action must be defined with the following object: { name: string, main: function, require: optional array<string>, requireApp: optional boolean }.`);
+		}
+
+		if (typeof options.name !== "string" || options.name.trim() === "") {
+			throw new SyntaxError(`The action must have a valid name (usage: { name: string, main: function, require: optional array<string>, requireApp: optional boolean, requireApp: optional boolean }).`);
+		}
+
+		if (typeof options.main !== "function") {
+			throw new SyntaxError(`The action must have a valid function (usage: { name: string, main: function, require: optional array<string>, requireApp: optional boolean }).`);
+		}
+
+		//
+		return dependencyManager
+			.load(options.require)
+			.then(function(dependencies) {
+				//
+				var dependency = _createDependency(options, dependencies);		
+
+				//
+				_component.action({
+					name: options.name,
+					main: dependency.main
+				});
+
+				//
+				return Promise.resolve(dependency);
+			});
+	};
 
 
 

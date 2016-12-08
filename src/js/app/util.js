@@ -1,7 +1,9 @@
 myapp.define({
-	name: "util",
-	require: ["util-array", "util-object", "util-string", "util-uri"],
+	name: "app.util.main",
+	require: ["app.util.array", "app.util.object", "app.util.string", "app.util.uri"],
 	main: function(UtilArray, UtilObject, UtilString, UtilURI) {
+	require: ["app.util"],
+	main: function(util) {
 		"use strict";
 
 		return function Util(options) {
