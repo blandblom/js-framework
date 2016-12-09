@@ -18,10 +18,20 @@ myapp.defineAction({
 
 		var _static = {};		
 
+
 		return function (_container, _component, _model, _module, _messenger) {
 			"use strict";
 
 			_model.propertyOne = 123345;
+
+
+			component
+				.create("model-name", _module, {})
+				.then(component => component);
+
+			component
+				.createList("model-name", _module, [])
+				.then(componentList => componentList);
 		};
 	}
 });

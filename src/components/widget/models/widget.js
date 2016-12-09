@@ -23,7 +23,7 @@ myapp.defineModel({
 
 		var _static = {};		
 
-		return function (_api, _model, _module, _messenger, _promises) {
+		return function(_api, _model, _module, _messenger, _promises) {
 			"use strict";
 
 			_model.propertyOne = 123345;
