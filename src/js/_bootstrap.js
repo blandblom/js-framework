@@ -2,9 +2,41 @@
 	The bootloader for the single-page-application.  No other 
 	objects are within the global 'window' namespace.
 */
-// myapp.bootstrap(function() {
 myapp.onReady(function() {
 	"use strict";
+
+	var _baseElement,
+		_routerCallback,
+		_component,
+		_dom,
+		_logger,
+		_messenger,
+		_router,
+		_util,
+		_flags,
+		_enums,
+		_user,
+		_svc,
+		_helpers;
+
+
+	// Base DOM element
+	_baseElement = document.querySelector("#application-container");
+
+
+	// Router Callbacks
+	_routerCallback.goto = function(route) {
+		_component
+			.module(route.key, _baseElement, route.data)
+			.then(module => module);
+	};
+
+
+	_routerCallback.notFound = function() {
+		_component
+			.module("not-found", _baseElement)
+			.then(module => module);
+	};
 
 
 
@@ -21,8 +53,16 @@ myapp.onReady(function() {
 			_dom = new myapp.DOM();
 			_logger = new myapp.Logger();
 			_messenger = new myapp.Messenger();
-			_router = new myapp.Router();
 
+			_router = new myapp.Router({
+				routes: myapp.getAppData("default-routes"),
+				callback: {
+					goto: _routerCallback.goto,
+					notFound: _routerCallback.notFound
+				}
+			});
+
+			// 
 			_util = new Util();
 			_flags = new Flags();
 			_enums = new Enums();

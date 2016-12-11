@@ -8,6 +8,7 @@ var myapp = new function() {
 		_class = {},
 		_api = {},
 		_helpers = {},
+		_appData = {},
 		_baseDependencies = [],
 		_onReadyList = [],
 		_isInitialized = false,
@@ -184,27 +185,22 @@ var myapp = new function() {
 	_api.Logger = createLogger();
 	_api.Messenger = createMessenger();
 	_api.Router = createRouter();
-	
-	// // //
-	// // _class.Component = createComponent();
-	// // _class.DOM = createDOM();
-	// // _class.Enum = createEnum();
-	// // _class.Logger = createLogger();
-	// // _class.Messenger = createMessenger();
-	// // _class.Router = createRouter();
-
-	// //
-	// _app.component = _class.Component();
-	// _app.dom = _class.DOM();
-	// _app.logger = _class.Logger();
-	// _app.messenger = _class.Messenger();
-	// _app.router = _class.Router();
 
 
 
 	/*********************************** API - Bootstrap & Configuration ***********************************/
 	_api.config = function(config)	 {
 		_config = Object.freeze(config);
+	};
+
+
+	_api.setAppData = function(key, data) {
+		_appData[key] = Object.freeze(data);
+	};
+
+
+	_api.getAppData = function(key) {
+		return _appData[key];
 	};
 
 
@@ -236,42 +232,8 @@ var myapp = new function() {
 	};
 
 
-	// _api.bootstrap = function(bootstrapFn) {
-	// 	// Validate arguments
-	// 	if (typeof bootstrapFn !== "function") {
-	// 		throw new SyntaxError(`Expecting a bootstrap function (usage: bootstrap(function)).`);
-	// 	}
 
-	// 	if (typeof _bootstrap === "function") {
-	// 		throw new Error(`The bootstrap method is already defined.`);
-	// 	}
-
-	// 	if (_isInitialized) {
-	// 		throw new Error(`The application has already been initialized.`);
-	// 	}
-
-	// 	//
-	// 	_bootstrap = bootstrapFn;
-
-	// 	//
-	// 	if (
-	// 		!_isInitialized
-	// 		&& (document.readyState === "interactive" || document.readyState === "complete")
-	// 	) {
-	// 		_bootstrap();
-	// 		_isInitialized = true;
-	// 	}
-	// 	else if (!_isInitialized) {
-	// 		document.addEventListener("DOMContentLoaded", function(event) {
-	// 			_bootstrap();
-	// 			_isInitialized = true;
-	// 		};
-	// 	}
-	// };
-
-
-
-	/*********************************** Return API ***********************************/
+	/*********************************** Initialize ***********************************/
 	document.addEventListener("DOMContentLoaded", function(event) {
 		_isInitialized = true;
 
