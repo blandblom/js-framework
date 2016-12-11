@@ -1,4 +1,7 @@
-myapp.define({
+/**
+	
+*/
+myapp.config({
 	name: "config",
 	main: {
 		

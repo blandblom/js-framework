@@ -1,0 +1,273 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"depen",
+				"dependencyManager"
+			],
+			[
+				"optin",
+				"optional"
+			],
+			[
+				"propert",
+				"propertyOne"
+			],
+			[
+				"_model",
+				"_modelInstance"
+			],
+			[
+				"current",
+				"currentIndex"
+			],
+			[
+				"prev",
+				"previousValue"
+			],
+			[
+				"call",
+				"callback2"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"ins",
+				"instanceZero1"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"prod",
+				"productID"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "TALIS JS Build",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/devroot/projects/js-libraries/notepad.js",
+		"/home/devroot/projects/js-libraries/src/types/enum.js",
+		"/home/devroot/projects/js-libraries/src/managers/messenger.js",
+		"/home/devroot/projects/js-libraries/src/types/README.md",
+		"/home/devroot/projects/js-libraries/src/util/main.js",
+		"/home/devroot/projects/js-libraries/src/util/README.md",
+		"/home/devroot/projects/js-libraries/src/component/component.js",
+		"/home/devroot/projects/js-libraries/src/component/README.md",
+		"/home/devroot/projects/js-libraries/src/util/array.js",
+		"/home/devroot/projects/js-libraries/src/util/string.js",
+		"/home/devroot/projects/js-libraries/src/util/object.js",
+		"/home/devroot/projects/js-libraries/src/util/uri.js",
+		"/home/devroot/projects/js-libraries/tests/component/component.js",
+		"/home/devroot/projects/js-libraries/tests/managers/flags.js",
+		"/home/devroot/projects/js-libraries/tests/managers/messenger.js",
+		"/home/devroot/projects/js-libraries/tests/types/enum.js",
+		"/home/devroot/projects/js-libraries/tests/index.html",
+		"/home/devroot/loopback/src/talis-js/src/client/js/core/flags.js",
+		"/home/devroot/projects/js-libraries/README.md",
+		"/home/devroot/projects/js-libraries/src/types/response.js",
+		"/home/devroot/projects/js-libraries/src/managers/README.md",
+		"/home/devroot/projects/js-libraries/LICENSE.txt",
+		"/home/devroot/projects/js-libraries/spec/jasmine_examples/PlayerSpec.js",
+		"/home/devroot/projects/js-libraries/.gitignore",
+		"/home/devroot/projects/js-libraries/spec/support/jasmine.json",
+		"/home/devroot/projects/js-libraries/types/enum.js",
+		"/home/devroot/projects/js-libraries/managers/messenger.js",
+		"/home/devroot/loopback/src/brianlandblom.com/client/projects/javascript-framework/diagrams/widget-website.svg",
+		"/home/devroot/loopback/src/brianlandblom.com/client/projects/javascript-framework/diagrams/widget-website (copy).svg",
+		"/home/devroot/loopback/src/brianlandblom.com/client/css/projects-assembly-editor.css",
+		"/home/devroot/loopback/src/brianlandblom.com/client/about/index.html",
+		"/home/devroot/loopback/src/brianlandblom.com/client/index.html",
+		"/home/devroot/loopback/src/brianlandblom.com/client/css/home.css",
+		"/home/devroot/loopback/src/brianlandblom.com/client/css/intro.css",
+		"/home/devroot/loopback/src/brianlandblom.com/brianlandblom.sublime-workspace",
+		"/home/devroot/loopback/src/brianlandblom.com/brianlandblom.comsublime-project",
+		"/home/devroot/loopback/src/pfl/client/components/order/actions/product.js",
+		"/home/devroot/loopback/src/pfl/client/components/order/actions/product-delivered-price.js",
+		"/home/devroot/loopback/src/pfl/client/components/printshop/models/_default.js",
+		"/home/devroot/loopback/src/pfl/client/components/order/views/product-delivered-price.html",
+		"/home/devroot/loopback/src/pfl/client/components/order/views/printshop-product-template-field.html",
+		"/home/devroot/loopback/src/pfl/client/components/order/views/printshop-product-template-field.js",
+		"/home/devroot/loopback/src/pfl/client/components/printshop/views/product-delivered-price.html",
+		"/home/devroot/loopback/src/pfl/client/components/printshop/views/product.html",
+		"/home/devroot/loopback/src/pfl/client/js/services/printshop.js",
+		"/home/devroot/loopback/src/pfl/client/css/components/printshop.css",
+		"/home/devroot/loopback/src/pfl/client/js/_config.js",
+		"/home/devroot/loopback/src/pfl/server.sh",
+		"/home/devroot/loopback/src/pfl/client/components/order/views/product.js",
+		"/home/devroot/loopback/src/pfl/client/components/printshop/models/product.js",
+		"/home/devroot/loopback/src/pfl/client/index.html",
+		"/home/devroot/loopback/src/pfl/client/components/printshop/views/_default.html",
+		"/home/devroot/loopback/src/pfl/client/js/_bootstrap.js",
+		"/home/devroot/loopback/src/pfl/client/js/core/send.js",
+		"/home/devroot/loopback/src/pfl/client/components/printshop/actions/product.js",
+		"/home/devroot/loopback/src/pfl/client/components/order/models/_default.js",
+		"/home/devroot/loopback/src/pfl/client/components/order/views/_default.html",
+		"/home/devroot/loopback/src/pfl/client/components/printshop/views/product-list.html",
+		"/home/devroot/loopback/src/pfl/client/js/services/_remote.js",
+		"/home/devroot/loopback/src/pfl/client/js/core/util.js",
+		"/home/devroot/loopback/src/pfl/client/js/framework/dependencyManager.js",
+		"/home/devroot/loopback/src/pfl/client/components/products/models/list.js",
+		"/home/devroot/loopback/src/pfl/client/components/products/views/list.html",
+		"/home/devroot/loopback/src/pfl/client/components/products/views/product.html",
+		"/home/devroot/loopback/src/pfl/client/components/cart/models/product.js",
+		"/home/devroot/loopback/src/python-unittest/main.py",
+		"/home/devroot/loopback/src/python-unittest/tests.py",
+		"/home/devroot/loopback/src/talis-js/build-system/_build.loopback.sh",
+		"/home/devroot/loopback/src/talis-js/build-system/_build.loopback.py",
+		"/home/devroot/loopback/src/talis-js/talis-js.conf",
+		"/home/devroot/loopback/src/talis-js/src/talis-js.service",
+		"/home/devroot/loopback/src/talis-js/src/client.service"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"index.html",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"_models",
+			"_private",
+			"enumConstant",
+			"animated-gif-container",
+			"client/",
+			"product.html"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"example-container"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 155.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 210.0,
+	"status_bar_visible": true
+}
