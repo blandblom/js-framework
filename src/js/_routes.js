@@ -2,14 +2,29 @@
 	
 */
 myapp.appData("default-routes", {
-// 	"projects": {
-// 		module: "my-module-name",
-// 		path: \^/r/projects/([A-Za-z0-9_\-]*)$\
-// 	},
-	"my-module-name": {
-		title: "My Module Title: {0} - {3}",
-		path: \^/r/projects/([A-Za-z0-9_\-]*)$\
+	"default": {
+		title: "",
+		path: {
+			regExp: /^\/r?\/?$/i
+		}
 	},
-	"default": \^\/r?\/?$\i,
-	"my-module-name": \^\/r\/projects\/([A-Za-z0-9_\-]*)$\i
+	"my-module-name": {
+		title: "My Module Title: {{ project-name }} - {{ projectId }}",
+		pathname: "/r/projects/{{ projectId }}/something-between/{{ project-name }}"
+		// search: [
+		// 	"queryOne",
+		// 	"queryTwo"
+		// ]
+	},
+	// "my-module-name": {
+	// 	title: "My Module Title: ${data.propertyOne} - ${data.propertyTwo}",
+	// 	path: {
+	// 		regExp: /^\/r\/projects\/([A-Za-z0-9_\-]*)\/?([A-Za-z0-9_\-]*)?\/?.*$/i,
+	// 		definition: {
+	// 			propertyOne: "pathname[0]",
+	// 			propertyTwo: "pathname[1]",
+	// 			propertyThree: "search.queryOne"
+	// 		}
+	// 	}
+	// }
 });

@@ -6,7 +6,7 @@ myapp.onReady(function() {
 	"use strict";
 
 	var _baseElement,
-		_routerCallback,
+		_router,
 		_component,
 		_dom,
 		_logger,
@@ -24,15 +24,28 @@ myapp.onReady(function() {
 	_baseElement = document.querySelector("#application-container");
 
 
-	// Router Callbacks
-	_routerCallback.goto = function(route) {
-		_component
-			.module(route.key, _baseElement, route.data)
-			.then(module => module);
+	// Handle router
+	_router.onRouteChanged = function(route) {
+		if (route.status === 200) {
+			_router.success(route);
+		}
+		else if (route.status === 404) {
+			_router.notFound(route);
+		}
 	};
 
 
-	_routerCallback.notFound = function() {
+	_router.success = function(route) {		
+		_component
+			.module(route.key, _baseElement, route.data)
+			.then(module => {
+				_messenger.global.post("onRouteChanged", route);
+				//module
+			});
+	};
+
+
+	_router.notFound = function(route) {
 		_component
 			.module("not-found", _baseElement)
 			.then(module => module);
@@ -55,11 +68,10 @@ myapp.onReady(function() {
 			_messenger = new myapp.Messenger();
 
 			_router = new myapp.Router({
+				interceptLinks: true,
+				baseElement: _baseElement,
 				routes: myapp.getAppData("default-routes"),
-				callback: {
-					goto: _routerCallback.goto,
-					notFound: _routerCallback.notFound
-				}
+				onRouteChanged: _router.onRouteChanged
 			});
 
 			// 
@@ -77,9 +89,14 @@ myapp.onReady(function() {
 				_user, _svc, _helpers, _component
 			]);
 
-			// Load initial modules
-			component.module(domElement1);
-			component.module(domElement2);
+			//
+			_router.gotoByLink(location.href;
+
+			// // Load initial modules
+			// _component.module(domElement1);
+			// _component.module(domElement2);
+
+			// _router.gotoByKey(key, data);
 		});
 
 
