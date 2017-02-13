@@ -8,11 +8,11 @@ myapp.defineModel({
 		"/components/my-component.js",
 		"/components/combined.js#my-component"
 	],
-	keys: [
-		"propertyOne",
-		"propertyTwo",
-		"propertyThree"
-	],
+	// keys: [
+	// 	"propertyOne",
+	// 	"propertyTwo",
+	// 	"propertyThree"
+	// ],
 	main: function(
 		config, util, flags, enums, dom,
 		messenger, logger, router,

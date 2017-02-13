@@ -10,13 +10,46 @@ myapp.define({
 
 
 
+		_static.getModelHandler = function(parentComponent, messenger) {
+			return {
+				get: function(baseObj, propertyName) {
+					return baseObj[propertyName];
+				},
+				set: function(baseObj, propertyName, value) {
+					var previousValue;
+
+					//
+					previousValue = baseObj[propertyName];
+
+					//
+					baseObj[propertyName] = value;
+
+					//
+					parentComponent.onModelChanged({
+						key: key,
+						value: value,
+						previousValue: previousValue
+					});
+
+					// 
+					messenger.model.post("onModelChanged", {
+						key: key,
+						value: value,
+						previousValue: previousValue
+					});
+				}
+			};
+		};
+
+
+
 		return function ComponentModel(options) {
 			var _api = {},
-				_model = {},
 				_internalModel = {},
-				_messenger,
 				_promises = [],
-				_modelInstance;
+				_model,
+				_modelInstance,
+				_messenger;
 
 
 			// Verify
@@ -28,43 +61,55 @@ myapp.define({
 				throw new SyntaxError(`The component must be a child of a module (usage: component.create(string, module, {})).`);
 			}
 
+			//
+			_parentComponent = ;
 
-			modelDefinition
-				.keys
-				.forEach(key => {
-					Object.defineProperty(_model, key, {
-						get: () => getProperty(key),
-						set: value => setProperty(key, value)
-					});
-				});
+			//
+			_messenger = ;
 
 
-			getProperty = function(key) {
-				return _internalModel[key];
-			};
+			//
+			_model = new Proxy({}, _static.getModelHandler(_parentComponent, _messenger));
+			//_model = new Proxy({}, _static.modelHandler);
 
 
-			setProperty = function(key, value) {
-				var previousValue = _models[key];
-				_internalModel[key] = valuevalue;
+			// modelDefinition
+			// 	.keys
+			// 	.forEach(key => {
+			// 		Object.defineProperty(_model, key, {
+			// 			get: () => getProperty(key),
+			// 			set: value => setProperty(key, value)
+			// 		});
+			// 	});
 
-				// The component must be notified of the
-				// model's change before any listeners.
-				if (typeof options.onModelChanged === "function") {
-					options.onModelChanged({
-						key: key,
-						value: value,
-						previousValue: previousValue
-					});
-				}
 
-				_messenger.model.post("onModelChanged", {
-					key: key,
-					value: value,
-					previousValue: previousValue
-				});
-			};
+			// getProperty = function(key) {
+			// 	return _internalModel[key];
+			// };
 
+
+			// setProperty = function(key, value) {
+			// 	var previousValue = _models[key];
+			// 	_internalModel[key] = valuevalue;
+
+			// 	// The component must be notified of the
+			// 	// model's change before any listeners.
+			// 	if (typeof options.onModelChanged === "function") {
+			// 		options.onModelChanged({
+			// 			key: key,
+			// 			value: value,
+			// 			previousValue: previousValue
+			// 		});
+			// 	}
+
+			// 	_messenger.model.post("onModelChanged", {
+			// 		key: key,
+			// 		value: value,
+			// 		previousValue: previousValue
+			// 	});
+			// };
+
+			//
 			_modelInstance = new _models[modelName](_api, _model, _module, _messenger, _promises);
 
 

@@ -68,9 +68,12 @@ myapp.onReady(function() {
 			_messenger = new myapp.Messenger();
 
 			_router = new myapp.Router({
-				interceptLinks: true,
-				baseElement: _baseElement,
 				routes: myapp.getAppData("default-routes"),
+				baseElement: _baseElement,
+				interceptor: {
+					enabled: true,
+					disabledClass: "setting-ignore-interceptor"
+				},
 				onRouteChanged: _router.onRouteChanged
 			});
 

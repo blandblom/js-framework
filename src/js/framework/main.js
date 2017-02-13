@@ -132,7 +132,7 @@ var myapp = new function() {
 				//
 				_component.model({
 					name: options.name,
-					keys: options.keys,
+					// keys: options.keys,
 					main: dependency.main
 				});
 
