@@ -237,6 +237,10 @@ var myapp = new function() {
 	document.addEventListener("DOMContentLoaded", function(event) {
 		_isInitialized = true;
 
+		// Initialize service worker
+		
+
+		// Run scripts waiting on the framework to initialize
 		_onReadyList.forEach(fn => {
 			if (typeof fn === "function") {
 				fn();

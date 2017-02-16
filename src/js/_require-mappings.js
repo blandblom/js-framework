@@ -4,6 +4,10 @@
 myapp.requireMappings({
 	// Configuration
 	"config": "/js/_config.js",
+	"config": {
+		path: "/js/_config.js",
+		isBackgroundLoad: true
+	}
 
 	// SAMPLE - Assumed to be the first on the page (should only be 1 definition in this case but that is not enforced)
 	"name-of-definition": "/js/sample.js",
