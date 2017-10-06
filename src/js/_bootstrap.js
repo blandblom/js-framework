@@ -2,6 +2,22 @@
 	The bootloader for the single-page-application.  No other 
 	objects are within the global 'window' namespace.
 */
+
+var myApp = new FrameworkName({
+	rootElement = document.querySelector("#application-container"),
+	require: [
+		"util", "flags", "enums", "user", "svc", "helpers"
+	],
+	onReady: function(app) {
+		app.util;
+		app.flags;
+		app.enums;
+		app.user;
+		app.svc;
+		app.helpers;
+	}
+});
+
 myapp.onReady(function() {
 	"use strict";
 
